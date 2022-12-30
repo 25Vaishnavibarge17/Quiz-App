@@ -1,26 +1,20 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:simplequiz/home.dart';
 /*import './question.dart';
 import './answer.dart';*/
 import './quiz.dart';
 import './result.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _MyAppState();
+    return _Home();
   }
 }
 
-class _MyAppState extends State<MyApp> {
+class _Home extends State<Home> {
   final _questions = const [
     {
       'questionText': 'Process of inserting an element in stack is called?',
@@ -133,14 +127,18 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: AnimatedSplashScreen(
-        splash: 'assets/splash.png',
-        duration: 3000,
-        nextScreen: const Home(),
-        splashTransition: SplashTransition.scaleTransition,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Simple DSA Quiz'),
         backgroundColor: Colors.cyan,
       ),
+      body: _questionIndex < _questions.length
+          ? Quiz(
+              answerQuestions: _answerQuestions,
+              questionIndex: _questionIndex,
+              questions: _questions,
+            ) //
+          : Result(_totalscore, _resetQuiz),
     );
   }
 }

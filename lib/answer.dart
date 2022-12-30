@@ -9,12 +9,6 @@ class Answer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // decoration: const BoxDecoration(
-      //   borderRadius: BorderRadius.only(
-      //     bottomLeft: Radius.circular(2),
-      //     bottomRight: Radius.circular(2),
-      //   ),
-      // ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
         color: const Color.fromARGB(255, 64, 226, 255),
